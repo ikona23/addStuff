@@ -1,24 +1,24 @@
-import {AddShit} from './addShit'
+import {Todo} from './todo'
 
 export class App {
   constructor() {
     this.heading = 'Add shit that needs to be done'
     this.message = 'Hello World!'
-    this.addStuff = []
-    this.addShitDesc = ''
+    this.todos = []
+    this.todoDescription = ''
   }
 
-  addShit() {
-    if(this.addShitDesc) {
-      this.addStuff.push(new AddShit(this.addShitDesc))
-      this.addShitDesc = ''
+  addTodo() {
+    if(this.todoDescription) {
+      this.todos.push(new Todo(this.todoDescription))
+      this.todoDescription = ''
     }
   }
 
-  removeShit(shit) {
-    let index = this.addStuff.indexOf(shit)
+  removeTodo(todo) {
+    let index = this.todos.indexOf(todo)
     if (index !== -1) {
-      this.addStuff.splice(index,1)
+      this.todos.splice(index,1)
     }
   }
 }

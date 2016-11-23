@@ -11,14 +11,14 @@ define('addShit',["exports"], function (exports) {
     }
   }
 
-  var AddShit = exports.AddShit = function AddShit(text) {
-    _classCallCheck(this, AddShit);
+  var Todo = exports.Todo = function Todo(descripion) {
+    _classCallCheck(this, Todo);
 
-    this.text = text;
+    this.description = description;
     this.done = false;
   };
 });
-define('app',['exports', './addShit'], function (exports, _addShit) {
+define('app',['exports', './todo'], function (exports, _todo) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -38,21 +38,21 @@ define('app',['exports', './addShit'], function (exports, _addShit) {
 
       this.heading = 'Add shit that needs to be done';
       this.message = 'Hello World!';
-      this.addStuff = [];
-      this.addShitDesc = '';
+      this.todos = [];
+      this.todoDescription = '';
     }
 
-    App.prototype.addShit = function addShit() {
-      if (this.addShitDesc) {
-        this.addStuff.push(new _addShit.AddShit(this.addShitDesc));
-        this.addShitDesc = '';
+    App.prototype.addTodo = function addTodo() {
+      if (this.todoDescription) {
+        this.todos.push(new _todo.Todo(this.todoDescription));
+        this.todoDescription = '';
       }
     };
 
-    App.prototype.removeShit = function removeShit(shit) {
-      var index = this.addStuff.indexOf(shit);
+    App.prototype.removeTodo = function removeTodo(todo) {
+      var index = this.todos.indexOf(todo);
       if (index !== -1) {
-        this.addStuff.splice(index, 1);
+        this.todos.splice(index, 1);
       }
     };
 
@@ -118,5 +118,25 @@ define('resources/index',["exports"], function (exports) {
   exports.configure = configure;
   function configure(config) {}
 });
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${heading}</h1>\n\n<form submit.trigger=\"addStuff()\"></form>\n  <input type=\"text\" value.bind='addShitDesc'>\n  <button type=\"submit\">Add Stuff</button>\n  </addShitD>\n  </form>\n  <h1>${addStuff}</h1>\n  <h1>${addShitDesc}</h1>\n</template>\n"; });
+define('todo',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var Todo = exports.Todo = function Todo(description) {
+    _classCallCheck(this, Todo);
+
+    this.description = description;
+    this.done = false;
+  };
+});
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${heading}</h1>\n\n<form submit.trigger=\"addTodo()\">\n  <input type=\"text\" value.bind='todoDescription'>\n  <button type=\"submit\">Add Stuff</button>\n  </addShitD>\n  </form>\n\n  <ul>\n    <li repeat.for=\"todo of todos\">\n    <input type=\"checkbox\" checked.bind=\"todo.done\">\n    <span>\n      ${todo.description}\n    </span>\n    <button click.trigger=\"removeTodo(todo)\">Remove</button>\n    </li>\n  </ul>\n</template>\n"; });
 //# sourceMappingURL=app-bundle.js.map
