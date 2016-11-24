@@ -1,0 +1,1 @@
+module.exports = require("npm:foundation-sites@6.2.4/dist/foundation.js");

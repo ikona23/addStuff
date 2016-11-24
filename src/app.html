@@ -4,16 +4,23 @@
 <form submit.trigger="addTodo()">
   <input type="text" value.bind='todoDescription'>
   <button type="submit">Add Stuff</button>
-  </addShitD>
+  <h1>${addTwo(3,4)}</h1>
+  <h4>hello ${newFunct(arr)}</h4>
+
+  <input type="text" value.bind='firstName'>
+  <input type="text" value.bind='lastName'>
+
+</addShit>
   </form>
 
   <ul>
     <li repeat.for="todo of todos">
     <input type="checkbox" checked.bind="todo.done">
-    <span>
+    <span css ="text-decoration: ${todo.done ? 'line-through' : 'none'}">
       ${todo.description}
     </span>
-    <button click.trigger="removeTodo(todo)">Remove</button>
+    <Button click.trigger="removeTodo(todo)">Remove</Button>
+    <button md-button="disabled.bind: disabled;" click.trigger="showToast()">Materialize Button</button>
     </li>
   </ul>
 </template>

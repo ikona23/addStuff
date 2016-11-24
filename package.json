@@ -49,5 +49,18 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-babel-preprocessor": "^6.0.1"
+  },
+  "jspm": {
+    "dependencies": {
+      "aurelia-materialize-bridge": "npm:aurelia-materialize-bridge@^0.20.0",
+      "foundation": "npm:foundation-sites@^6.2.4",
+      "materialize": "npm:materialize@^1.0.0",
+      "materialize": "github:Dogfalo/materialize@0.96.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
